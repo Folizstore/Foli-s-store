@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foliz Store</title>
+    <style>
+        /* style.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: gold;
+            padding: 10px;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        #home {
+            background-color: #333;
+            text-align: center;
+        }
+
+        #products {
+            display: flex;
+            justify-content: space-around;
+            background-color: #444;
+        }
+
+        .product {
+            background-color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            width: 200px;
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: gold;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ffcc00;
+        }
+
+        #cart {
+            background-color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#products">المنتجات</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- الصفحة الرئيسية -->
+    <section id="home">
+        <h1>أهلاً بك في Foliz Store</h1>
+        <p>منتجات عالية الجودة بأسعار تنافسية</p>
+    </section>
+
+    <!-- عرض المنتجات -->
+    <section id="products">
+        <h2>منتجاتنا</h2>
+        <div class="product">
+            <img src="product1.jpg" alt="منتج 1">
+            <p>منتج 1</p>
+            <p>السعر: 100 د.ج</p>
+            <button onclick="addToCart('منتج 1', 100)">إضافة إلى السلة</button>
+        </div>
+        <div class="product">
+            <img src="product2.jpg" alt="منتج 2">
+            <p>منتج 2</p>
+            <p>السعر: 150 د.ج</p>
+            <button onclick="addToCart('منتج 2', 150)">إضافة إلى السلة</button>
+        </div>
+    </section>
+
+    <!-- السلة -->
+    <section id="cart">
+        <h2>السلة</h2>
+        <ul id="cartItems">
+            <!-- العناصر ستظهر هنا عبر JavaScript -->
+        </ul>
+        <button onclick="checkout()">إتمام الطلب</button>
+    </section>
+
+    <!-- الاتصال -->
+    <section id="contact">
+        <h2>اتصل بنا</h2>
+        <p>رقم الهاتف: 0673571886</p>
+        <p>البريد الإلكتروني: sidalicherradi072@gmail.com</p>
+    </section>
+
+    <script>
+        // script.js
+        let cart = [];
+
+        function addToCart(productName, productPrice) {
+            // إضافة المنتج إلى السلة
+            const product = {
+                name: productName,
+                price: productPrice
+            };
+            cart.push(product);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById("cartItems");
+            cartItems.innerHTML = '';
+            
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} - ${item.price} د.ج`;
+                cartItems.appendChild(li);
+            });
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("السلة فارغة");
+            } else {
+                alert("تم إتمام الطلب بنجاح");
+            }
+        }
+    </script>
+</body>
+</html>
