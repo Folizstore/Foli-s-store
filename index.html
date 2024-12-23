@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foliz Store</title>
+    <link rel="stylesheet" href="foliz_store.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#products">المنتجات</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h1>أهلاً بك في Foliz Store</h1>
+        <p>منتجات عالية الجودة بأسعار تنافسية</p>
+    </section>
+
+    <section id="products">
+        <h2>منتجاتنا</h2>
+        <div class="product">
+            <img src="product1.jpg" alt="منتج 1">
+            <p>منتج 1</p>
+            <p>السعر: 100 د.ج</p>
+            <button onclick="addToCart('منتج 1', 100)">إضافة إلى السلة</button>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>اتصل بنا</h2>
+        <p>رقم الهاتف: 0673571886</p>
+        <p>البريد الإلكتروني: sidalicherradi072@gmail.com</p>
+    </section>
+
+    <script>
+        let cart = [];
+
+        function addToCart(productName, productPrice) {
+            const product = { name: productName, price: productPrice };
+            cart.push(product);
+            alert(productName + " أضيف إلى السلة");
+        }
+    </script>
+</body>
+</html>
